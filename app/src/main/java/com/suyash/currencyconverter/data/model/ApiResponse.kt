@@ -9,12 +9,13 @@ data class ApiResponse(
     @SerializedName("base")
     val base: String = "",
     @SerializedName("rates")
-    val rates: CurrencyRates ,
+    val rates: HashMap<String, Float>
 )
 
 fun ApiResponse.toRateEntity() : Rate {
     return Rate(
         base = base,
-        rates = rates
+        currencyRates = rates
     )
 }
+

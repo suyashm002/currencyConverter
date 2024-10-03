@@ -6,12 +6,13 @@ import com.google.gson.reflect.TypeToken
 
 class CurrencyRatesConverter {
     @TypeConverter
-    fun fromCurrencyRates(currencyRates: CurrencyRates): String {
-        return Gson().toJson(currencyRates)
+    fun fromCurrencyRatesMap(map: Map<String, Float>?): String {
+        return Gson().toJson(map)
     }
 
     @TypeConverter
-    fun toCurrencyRates(currencyRatesString: String): CurrencyRates {
-        return Gson().fromJson(currencyRatesString, CurrencyRates::class.java)
+    fun toCurrencyRatesMap(json: String): Map<String, Float>? {
+        val type = object : TypeToken<Map<String, Float>>() {}.type
+        return Gson().fromJson(json, type)
     }
 }

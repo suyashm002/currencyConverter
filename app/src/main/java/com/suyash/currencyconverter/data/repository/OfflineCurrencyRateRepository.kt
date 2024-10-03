@@ -1,5 +1,6 @@
 package com.suyash.currencyconverter.data.repository
 
+import android.util.Log
 import com.suyash.currencyconverter.data.api.NetworkService
 import com.suyash.currencyconverter.data.local.DatabaseService
 import com.suyash.currencyconverter.data.local.SharedPreferenceService
@@ -22,11 +23,13 @@ class OfflineCurrencyRateRepository @Inject constructor(
 ) {
 
     fun getCurrencies(): Flow<Rate> {
-        return flow { emit(networkService.getCurrencies(API_KEY)) }
+        return flow {
+            emit(networkService.getCurrencies(API_KEY)) }
             .map { it -> it.toRateEntity()
             }.flatMapConcat { rates ->
                 flow { emit(databaseService.deleteAllAndInsertAll(rates)) }
             }.flatMapConcat {
+                Log.d("data",it.toString())
                 databaseService.getApiResponse()
             }
     }

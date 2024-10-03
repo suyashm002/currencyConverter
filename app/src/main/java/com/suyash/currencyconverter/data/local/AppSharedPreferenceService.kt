@@ -7,8 +7,9 @@ import java.util.concurrent.TimeUnit
 
 class AppSharedPreferenceService(private val context: Context) : SharedPreferenceService {
 
+    private val sharedPreferences = context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+
     override fun getTimeStamp(): Boolean {
-        val sharedPreferences = context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
 
         // Get the saved timestamp (default is 0 if not found)
         val savedTimestamp = sharedPreferences.getLong("saved_timestamp", 0L)
@@ -31,14 +32,13 @@ class AppSharedPreferenceService(private val context: Context) : SharedPreferenc
 
     override fun saveTimeStamp() {
 
-        val sharedPreferences = context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
 
         val currentTime = System.currentTimeMillis()
 // Create an editor to write data
         val editor = sharedPreferences.edit()
 
 // Put the string value in SharedPreferences
-        editor.putLong("timeStamp", currentTime)
+        editor.putLong("saved_timestamp", currentTime)
 // Commit or apply the changes
         editor.apply() // Or use editor.commit() if you want synchronous saving
     }
