@@ -29,12 +29,6 @@ fun currencyRateScreen(
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    var selectedCurrency by remember { mutableStateOf("USD") }  // Default currency
-    var amountInput by remember { mutableStateOf("") }
-    var convertedValues by remember { mutableStateOf<Map<String, Float>>(emptyMap()) }
-    //val currencyList = rates.keys.toList() // List of all available currencies
-
-
     Scaffold(topBar = {
         TopAppBar(colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
             containerColor = MaterialTheme.colorScheme.primary,

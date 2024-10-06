@@ -1,3 +1,5 @@
+import com.android.build.api.dsl.Packaging
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -48,6 +50,14 @@ android {
     tasks.withType<Test> {
         useJUnitPlatform()
     }
+    packaging {
+        resources {
+            excludes.add("META-INF/LICENSE.md")
+            excludes.add("META-INF/LICENSE.txt")
+            excludes.add("META-INF/NOTICE.md")
+            excludes.add("META-INF/NOTICE.txt")
+        }
+    }
 }
 
 dependencies {
@@ -55,9 +65,11 @@ dependencies {
     implementation("androidx.core:core-ktx:1.13.1")
     implementation ("androidx.activity:activity-compose:1.9.2")
     implementation  ("androidx.compose:compose-bom:2024.09.02")
-    implementation ("androidx.compose.ui:ui")
-    implementation ("androidx.compose.ui:ui-graphics")
-    implementation ("androidx.compose.ui:ui-tooling-preview")
+    implementation ("androidx.compose.ui:ui:1.7.3")
+    implementation("androidx.compose.material:material:1.7.3")
+    implementation("androidx.compose.ui:ui-tooling:1.7.3")
+    implementation ("androidx.compose.ui:ui-graphics:1.7.3")
+    implementation ("androidx.compose.ui:ui-tooling-preview:1.7.3")
     implementation ("androidx.compose.material3:material3:1.3.0")
     implementation ("com.google.android.material:material:1.12.0")
     implementation ("io.coil-kt:coil-compose:2.4.0")
@@ -65,9 +77,10 @@ dependencies {
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.6")
     implementation ("com.google.dagger:hilt-android:2.51.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
     implementation("androidx.appcompat:appcompat:1.7.0")
-    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter:5.8.1")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter:5.8.2")
     kapt("com.google.dagger:hilt-compiler:2.51.1")
     implementation ("androidx.browser:browser:1.8.0")
     implementation ("androidx.hilt:hilt-navigation-compose:1.2.0")
@@ -83,14 +96,29 @@ dependencies {
     androidTestImplementation ("androidx.test.espresso:espresso-core:3.6.1")
     androidTestImplementation ("androidx.compose:compose-bom:2024.09.02")
 
-    debugImplementation ("androidx.compose.ui:ui-tooling")
-    debugImplementation ("androidx.compose.ui:ui-test-manifest")
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.7.3")
 
+    debugImplementation ("androidx.compose.ui:ui-tooling:1.7.3")
+    debugImplementation ("androidx.compose.ui:ui-test-manifest:1.7.3")
+    implementation("androidx.ui:ui-framework:0.1.0-dev10")
     // For Mockito
-    testImplementation("org.mockito:mockito-core:5.2.0")
+    testImplementation("org.mockito:mockito-core:5.7.0")
 // Mockito Kotlin for Kotlin extensions
     testImplementation("org.mockito.kotlin:mockito-kotlin:5.2.0")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
-    testImplementation("androidx.arch.core:core-testing:2.1.0")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+    testImplementation("androidx.arch.core:core-testing:2.2.0")
     testImplementation("app.cash.turbine:turbine:0.12.1")
+
+    // Hilt testing dependencies
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.44")
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.51.1")
+    // Core Android Testing
+    androidTestImplementation("androidx.test:core:1.6.1")
+    androidTestImplementation("androidx.test.ext:junit:1.2.1")
+
+//    // For using mockk in unit tests
+//    testImplementation("io.mockk:mockk:1.13.5")
+//
+//// For using mockk in Android instrumented tests
+//    androidTestImplementation("io.mockk:mockk-android:1.13.5")
 }

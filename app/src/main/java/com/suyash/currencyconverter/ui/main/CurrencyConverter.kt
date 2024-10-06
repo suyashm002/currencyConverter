@@ -16,6 +16,7 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.input.TextFieldValue
 import com.suyash.currencyconverter.data.local.entity.Rate
 
@@ -37,6 +38,7 @@ fun CurrencyConverter(
             label = { Text("Enter Amount") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             modifier = Modifier.fillMaxWidth()
+                .testTag("amountInputField")
         )
 
         Spacer(modifier = Modifier.height(16.dp))
