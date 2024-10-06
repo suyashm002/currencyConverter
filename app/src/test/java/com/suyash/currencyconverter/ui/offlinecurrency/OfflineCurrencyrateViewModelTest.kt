@@ -15,22 +15,16 @@ import com.suyash.currencyconverter.utils.NetworkHelper
 import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertTrue
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.StandardTestDispatcher
-import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
-import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.mockito.ArgumentMatchers.anyString
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
-import org.mockito.kotlin.never
-import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
 import kotlin.time.Duration.Companion.seconds
 
@@ -50,15 +44,6 @@ class OfflineCurrencyrateViewModelTest {
 
     @Mock
     private lateinit var offlineCurrencyRateRepository: OfflineCurrencyRateRepository
-
-    @Mock
-    lateinit var sharedPreferenceService: SharedPreferenceService
-
-    @Mock
-    lateinit var databaseService: DatabaseService
-
-    @Mock
-    lateinit var networkService: NetworkService
 
     // ViewModel under test
     private lateinit var viewModel: OfflineCurrencyrateViewModel

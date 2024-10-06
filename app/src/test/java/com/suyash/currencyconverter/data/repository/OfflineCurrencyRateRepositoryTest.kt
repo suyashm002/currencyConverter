@@ -6,42 +6,19 @@ import com.suyash.currencyconverter.data.local.DatabaseService
 import com.suyash.currencyconverter.data.local.SharedPreferenceService
 import com.suyash.currencyconverter.data.local.entity.Rate
 import com.suyash.currencyconverter.data.model.ApiResponse
-import com.suyash.currencyconverter.data.model.toRateEntity
 import com.suyash.currencyconverter.utils.AppConstant.API_KEY
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.toList
-
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.StandardTestDispatcher
-import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.runBlockingTest
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
-import org.junit.After
-
-
 import org.junit.Before
 import org.junit.Test
-import org.junit.Assert.*
-import org.mockito.ArgumentMatchers.anyString
-import org.mockito.Mock
-import org.mockito.Mockito.atLeastOnce
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.never
 import org.mockito.Mockito.verify
-
-import org.mockito.Mockito.`when`
-import org.mockito.MockitoAnnotations
- import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.flow.toList
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.StandardTestDispatcher
- import kotlinx.coroutines.test.setMain
-import kotlinx.coroutines.test.runTest
-
 import org.mockito.kotlin.*
 import org.junit.Assert.assertEquals
 
