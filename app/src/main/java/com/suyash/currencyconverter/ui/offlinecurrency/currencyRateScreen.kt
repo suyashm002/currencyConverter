@@ -25,7 +25,7 @@ import com.suyash.currencyconverter.utils.AppConstant
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun currencyRateScreen(
-    viewModel: offlineCurrencyrateViewModel = hiltViewModel()
+    viewModel: OfflineCurrencyrateViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 

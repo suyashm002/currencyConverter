@@ -1,15 +1,13 @@
 package com.suyash.currencyconverter.data.local
 
 import android.content.Context
-import android.content.Context.MODE_PRIVATE
-import android.content.SharedPreferences
 import java.util.concurrent.TimeUnit
 
 class AppSharedPreferenceService(private val context: Context) : SharedPreferenceService {
 
     private val sharedPreferences = context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
 
-    override fun getTimeStamp(): Boolean {
+    override fun isMoreThanThirtyMinutes(): Boolean {
 
         // Get the saved timestamp (default is 0 if not found)
         val savedTimestamp = sharedPreferences.getLong("saved_timestamp", 0L)

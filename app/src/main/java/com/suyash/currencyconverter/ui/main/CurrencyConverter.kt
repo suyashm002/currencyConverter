@@ -48,16 +48,6 @@ fun CurrencyConverter(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Button to trigger conversion
-        Button(
-            onClick = {
-                val amount = amountInput ?: 0f
-                onConvert(amount as Float, selectedCurrency)
-            },
-            modifier = Modifier.align(Alignment.CenterHorizontally)
-        ) {
-            Text("Convert")
-        }
 
         Spacer(modifier = Modifier.height(16.dp))
 
