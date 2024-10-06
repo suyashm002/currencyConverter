@@ -11,13 +11,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class offlineCurrencyrateViewModel @Inject constructor(
+class OfflineCurrencyrateViewModel @Inject constructor(
     networkHelper: NetworkHelper,
     private val offlineCurrencyRateRepository: OfflineCurrencyRateRepository
 ) : ViewModel() {
@@ -34,7 +33,7 @@ class offlineCurrencyrateViewModel @Inject constructor(
         }
     }
 
-    private fun fetchCurrency() {
+     fun fetchCurrency() {
         viewModelScope.launch {
             offlineCurrencyRateRepository.getCurrencies()
                 .flowOn(Dispatchers.IO)

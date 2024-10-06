@@ -45,6 +45,9 @@ android {
     kapt {
         correctErrorTypes = true
     }
+    tasks.withType<Test> {
+        useJUnitPlatform()
+    }
 }
 
 dependencies {
@@ -63,6 +66,8 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.6")
     implementation ("com.google.dagger:hilt-android:2.51.1")
     implementation("androidx.appcompat:appcompat:1.7.0")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter:5.8.1")
     kapt("com.google.dagger:hilt-compiler:2.51.1")
     implementation ("androidx.browser:browser:1.8.0")
     implementation ("androidx.hilt:hilt-navigation-compose:1.2.0")
@@ -73,11 +78,19 @@ dependencies {
     annotationProcessor("androidx.room:room-compiler:2.6.1")
     kapt("androidx.room:room-compiler:2.6.1")
 
-    testImplementation ("junit:junit:4.13.2")
+
     androidTestImplementation ("androidx.test.ext:junit:1.2.1")
     androidTestImplementation ("androidx.test.espresso:espresso-core:3.6.1")
     androidTestImplementation ("androidx.compose:compose-bom:2024.09.02")
-    androidTestImplementation ("androidx.compose.ui:ui-test-junit4")
+
     debugImplementation ("androidx.compose.ui:ui-tooling")
     debugImplementation ("androidx.compose.ui:ui-test-manifest")
+
+    // For Mockito
+    testImplementation("org.mockito:mockito-core:5.2.0")
+// Mockito Kotlin for Kotlin extensions
+    testImplementation("org.mockito.kotlin:mockito-kotlin:5.2.0")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
+    testImplementation("androidx.arch.core:core-testing:2.1.0")
+    testImplementation("app.cash.turbine:turbine:0.12.1")
 }
