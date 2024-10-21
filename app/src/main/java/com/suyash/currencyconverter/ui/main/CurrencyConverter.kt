@@ -1,16 +1,13 @@
 package com.suyash.currencyconverter.ui.main
 
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Text
@@ -27,7 +24,6 @@ fun CurrencyConverter(
 ) {
     var selectedCurrency by remember { mutableStateOf("USD") }  // Default currency
     var amountInput by remember { mutableStateOf(TextFieldValue("")) }
-    var convertedValues by remember { mutableStateOf<Map<String, Float>>(emptyMap()) }
     val currencyList = rates.currencyRates?.keys?.toList() // List of all available currencies
 
     Column(modifier = Modifier.padding(16.dp)) {
